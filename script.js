@@ -1,32 +1,31 @@
 window.onload = function () {
 
 	var todoList = [];
-	if (localStorage.getItem('todo') != undefined) {
-		todoList = JSON.parse(localStorage.getItem('todo'));
+	if (localStorage.getItem('text') != undefined) {
+		todoList = JSON.parse(localStorage.getItem('text'));
 		out();
 	}
 
 	document.getElementById('add').onclick = function() {
-		var text = document.getElementById('inner').value;
+		var text = document.getElementById('inner-text').value;
+		var link = document.getElementById('inner-link').value;
 		var temp = {};
-		temp.todo = text;
-		temp.check = false;
+		temp.text = text;
+		temp.link = link;
 		var i = todoList.length;
 		todoList[i] = temp;
-		// todoList.push(text);
-		console.log(todoList);
+		// console.log(todoList);
 		out();
-		localStorage.setItem('todo', JSON.stringify(todoList));
+		localStorage.setItem('text', JSON.stringify(todoList));
 	} 
 
 	function out() {
-		var out = '';
+		var out = '<ol>';
 		for (var key in todoList) {
-			out += todoList[key].todo + '<br>';
+			out += '<li><a href="' + todoList[key].link  + '">' + todoList[key].text + '</a> - <i>' + todoList[key].link + '</i>';
 		}
-		// for (var i = 0; i < todoList.length; i++) {
-		// 	out += todoList[i] + '<br>';
-		// }
+		out += '</ol>';
+
 		document.getElementById('outer').innerHTML = out;
 	}
 }
