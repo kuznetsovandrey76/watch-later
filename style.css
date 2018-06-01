@@ -1,8 +1,10 @@
 header, footer {
 	background: khaki;
-	height: 100px;
+	text-align: center;
+	padding: 10px 0 10px;
+	margin-bottom: 10px;
 }
 
 section {
-	height: 500px;
+	/*height: 500px;*/
 }
